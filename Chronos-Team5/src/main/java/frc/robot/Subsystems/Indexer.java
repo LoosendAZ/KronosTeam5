@@ -2,9 +2,11 @@ package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+
 public class Indexer extends SubsystemBase{
     private Indexer s_Indexer;
     
+
     public Indexer getInstance() {
         if(s_Indexer == null) {
             s_Indexer = new Indexer();

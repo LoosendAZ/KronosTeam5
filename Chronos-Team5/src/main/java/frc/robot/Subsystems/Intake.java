@@ -14,6 +14,9 @@ public class Intake extends SubsystemBase{
 
     }
 
+    //https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2025-beta-latest.json
+    //https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2024-latest.json
+
     //All values are arbitrary for now feel free to change
 
     public enum IntakeStates {
