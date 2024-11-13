@@ -2,10 +2,15 @@ package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 public class Indexer extends SubsystemBase{
     private Indexer s_Indexer;
     
+    //As far as I remember there were 2 motors I could be wrong
+    private TalonFX m_IndexerLeader;
+    private TalonFX m_IndexerFollower;
 
     public Indexer getInstance() {
         if(s_Indexer == null) {
@@ -15,7 +20,7 @@ public class Indexer extends SubsystemBase{
     }
 
     public Indexer() {
-
+        
     }
 
     //All values are arbitrary for now feel free to change

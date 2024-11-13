@@ -1,9 +1,15 @@
 package frc.robot.Subsystems;
 
+
+import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.hardware.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase{
     private Intake s_Intake;
+
+    private TalonFX m_Intake;
+
     public Intake getInstance() {
         if(s_Intake == null) {
             s_Intake = new Intake();
@@ -13,9 +19,6 @@ public class Intake extends SubsystemBase{
     public Intake() {
 
     }
-
-    //https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2025-beta-latest.json
-    //https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2024-latest.json
 
     //All values are arbitrary for now feel free to change
 
