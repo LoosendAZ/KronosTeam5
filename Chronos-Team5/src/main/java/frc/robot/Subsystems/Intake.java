@@ -4,6 +4,7 @@ package frc.robot.Subsystems;
 import com.ctre.phoenix6.*;
 import com.ctre.phoenix6.hardware.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.Constants;
 
 public class Intake extends SubsystemBase{
     private Intake s_Intake;
@@ -18,8 +19,8 @@ public class Intake extends SubsystemBase{
         return s_Intake;
     }
     public Intake() {
-        m_IntakeLeader = new TalonFX(123);
-        m_IntakeFollower = new TalonFX(456);
+        m_IntakeLeader = new TalonFX(Constants.HardwarePorts.m_IntakeLeader);
+        m_IntakeFollower = new TalonFX(Constants.HardwarePorts.m_IntakeFollower);
     }
 
     //All values are arbitrary for now feel free to change

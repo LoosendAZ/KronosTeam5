@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix6.*;
 import com.ctre.phoenix6.hardware.*;
 
+import frc.Constants;
+
 public class Shooter extends SubsystemBase{
     private Shooter s_Shooter;
 
@@ -18,8 +20,8 @@ public class Shooter extends SubsystemBase{
         return s_Shooter;
     }
     public Shooter() {
-        m_Shooter = new TalonFX(123);
-        m_ShooterReverse = new TalonFX(456);
+        m_Shooter = new TalonFX(Constants.HardwarePorts.m_Shooter);
+        m_ShooterReverse = new TalonFX(Constants.HardwarePorts.m_ShooterReverse);
     }
 
     //All values are arbitrary for now feel free to change
