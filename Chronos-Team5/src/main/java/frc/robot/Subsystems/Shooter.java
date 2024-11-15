@@ -15,7 +15,6 @@ public class Shooter extends SubsystemBase{
     private TalonFX m_Shooter;
     private TalonFX m_ShooterReverse;
 
-    private SmartDashboard dashboard;
 
     public Shooter getInstance() {
         if(s_Shooter == null) {
@@ -55,6 +54,6 @@ public class Shooter extends SubsystemBase{
     }
 
     public void periodic() {
-        dashboard.putData("Shooter motor", m_Shooter);
+        SmartDashboard.putData("Shooter motor", m_Shooter);
     }
 }

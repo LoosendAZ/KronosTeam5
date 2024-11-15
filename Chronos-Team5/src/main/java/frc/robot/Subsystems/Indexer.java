@@ -15,8 +15,6 @@ public class Indexer extends SubsystemBase{
     private TalonFX m_IndexerLeader;
     private TalonFX m_IndexerFollower;
 
-    private SmartDashboard dashboard;
-
     public Indexer getInstance() {
         if(s_Indexer == null) {
             s_Indexer = new Indexer();
@@ -58,6 +56,6 @@ public class Indexer extends SubsystemBase{
     }
 
     public void periodic() {
-        dashboard.putData("Indexer Motor", m_IndexerLeader);
+        SmartDashboard.putData("Indexer Motor", m_IndexerLeader);
     }
 }

@@ -14,8 +14,6 @@ public class Intake extends SubsystemBase{
     private TalonFX m_IntakeLeader;
     private TalonFX m_IntakeFollower;
 
-    private SmartDashboard dashboard; 
-
     public Intake getInstance() {
         if(s_Intake == null) {
             s_Intake = new Intake();
@@ -30,19 +28,27 @@ public class Intake extends SubsystemBase{
     //All values are arbitrary for now feel free to change
 
     public enum IntakeStates {
-        ON(),
-        OFF(),
-        REVERSE();
+        ON(1.0),
+        OFF(0.0),
+        REVERSE(-1.0);
 
         private double speed;
 
-        private IntakeStates() {
+        private IntakeStates(double state) {
+            this.speed = state;
+        }
 
+        public double getSpeed() {
+            return this.speed;
         }
     }
 
+    public void setVoltage() {
+        m_IntakeLeader.setVoltage(IntakeStates.ON.getSpeed());
+    }
+
     public void periodic() {
-        dashboard.putData("Intake Motor", m_IntakeLeader);
+        SmartDashboard.putData("Intake Motor", m_IntakeLeader);
     }
     
 }
