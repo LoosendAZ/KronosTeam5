@@ -7,6 +7,7 @@ import com.ctre.phoenix6.*;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import frc.Constants;
+import frc.robot.Subsystems.Intake.IntakeStates;
 
 public class Indexer extends SubsystemBase{
     private Indexer s_Indexer;
@@ -46,9 +47,9 @@ public class Indexer extends SubsystemBase{
         }
     }
 
-    public void setVoltage() {
+    public void setVoltage(IndexerStates state) {
         //Arbitrary value
-        m_IndexerLeader.setVoltage(IndexerStates.ON.getSpeed());
+        m_IndexerLeader.setVoltage(state.getSpeed());
     }
 
     public double getVoltage() {

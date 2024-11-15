@@ -44,9 +44,9 @@ public class Shooter extends SubsystemBase{
         }
     }
 
-    public void setVoltage() {
+    public void setVoltage(ShooterStates state) {
         //Arbitrary value
-        m_Shooter.setVoltage(IndexerStates.ON.getSpeed());
+        m_Shooter.setVoltage(state.getSpeed());
     }
 
     public double getVoltage() {

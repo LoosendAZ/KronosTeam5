@@ -43,8 +43,8 @@ public class Intake extends SubsystemBase{
         }
     }
 
-    public void setVoltage() {
-        m_IntakeLeader.setVoltage(IntakeStates.ON.getSpeed());
+    public void setVoltage(IntakeStates state) {
+        m_IntakeLeader.setVoltage(state.getSpeed());
     }
 
     public void periodic() {
