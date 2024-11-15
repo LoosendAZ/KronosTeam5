@@ -1,5 +1,6 @@
 package frc.robot.Subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.*;
@@ -14,6 +15,8 @@ public class Indexer extends SubsystemBase{
     private TalonFX m_IndexerLeader;
     private TalonFX m_IndexerFollower;
 
+    private SmartDashboard dashboard;
+
     public Indexer getInstance() {
         if(s_Indexer == null) {
             s_Indexer = new Indexer();
@@ -24,6 +27,7 @@ public class Indexer extends SubsystemBase{
     public Indexer() {
         m_IndexerLeader = new TalonFX(Constants.HardwarePorts.m_IndexerLeader);
         m_IndexerFollower = new TalonFX(Constants.HardwarePorts.m_IndexerFollower);
+        
     }
 
     //All values are arbitrary for now feel free to change
@@ -49,7 +53,11 @@ public class Indexer extends SubsystemBase{
         m_IndexerLeader.setVoltage(IndexerStates.ON.getSpeed());
     }
 
-    public void periodic() {
+    public double getVoltage() {
+        return -1.0;
+    }
 
+    public void periodic() {
+        dashboard.putData("Indexer Motor", m_IndexerLeader);
     }
 }

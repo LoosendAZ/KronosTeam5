@@ -3,6 +3,8 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix6.*;
 import com.ctre.phoenix6.hardware.*;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.Constants;
 
@@ -11,6 +13,8 @@ public class Intake extends SubsystemBase{
 
     private TalonFX m_IntakeLeader;
     private TalonFX m_IntakeFollower;
+
+    private SmartDashboard dashboard; 
 
     public Intake getInstance() {
         if(s_Intake == null) {
@@ -38,7 +42,7 @@ public class Intake extends SubsystemBase{
     }
 
     public void periodic() {
-
+        dashboard.putData("Intake Motor", m_IntakeLeader);
     }
     
 }
