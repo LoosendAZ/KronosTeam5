@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Intake extends SubsystemBase{
     private Intake s_Intake;
 
-    private TalonFX m_Intake;
+    private TalonFX m_IntakeLeader;
+    private TalonFX m_IntakeFollower;
 
     public Intake getInstance() {
         if(s_Intake == null) {
@@ -17,7 +18,8 @@ public class Intake extends SubsystemBase{
         return s_Intake;
     }
     public Intake() {
-
+        m_IntakeLeader = new TalonFX(123);
+        m_IntakeFollower = new TalonFX(456);
     }
 
     //All values are arbitrary for now feel free to change
