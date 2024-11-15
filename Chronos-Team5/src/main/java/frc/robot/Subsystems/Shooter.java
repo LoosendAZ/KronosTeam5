@@ -6,6 +6,7 @@ import com.ctre.phoenix6.*;
 import com.ctre.phoenix6.hardware.*;
 
 import frc.Constants;
+import frc.robot.Subsystems.Indexer.IndexerStates;
 
 public class Shooter extends SubsystemBase{
     private Shooter s_Shooter;
@@ -25,17 +26,25 @@ public class Shooter extends SubsystemBase{
     }
 
     //All values are arbitrary for now feel free to change
-
     public enum ShooterStates {
-        ON(),
-        OFF(),
-        REVERSE();
+        ON(1.0),
+        OFF(0.0),
+        REVERSE(-1.0);
 
         private double speed;
 
-        private ShooterStates() {
-
+        private ShooterStates(double state) {
+            this.speed = state;
         }
+
+        public double getSpeed() {
+            return this.speed;
+        }
+    }
+
+    public void setVoltage() {
+        //Arbitrary value
+        m_Shooter.setVoltage(IndexerStates.ON.getSpeed());
     }
 
     public double getVoltage() {

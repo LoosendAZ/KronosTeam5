@@ -29,15 +29,24 @@ public class Indexer extends SubsystemBase{
     //All values are arbitrary for now feel free to change
 
     public enum IndexerStates {
-        ON(),
-        OFF(),
-        REVERSE();
+        ON(1.0),
+        OFF(0.0),
+        REVERSE(-1.0);
 
         private double speed;
 
-        private IndexerStates() {
-
+        private IndexerStates(double state) {
+            this.speed = state;
         }
+
+        public double getSpeed() {
+            return this.speed;
+        }
+    }
+
+    public void setVoltage() {
+        //Arbitrary value
+        m_IndexerLeader.setVoltage(IndexerStates.ON.getSpeed());
     }
 
     public void periodic() {

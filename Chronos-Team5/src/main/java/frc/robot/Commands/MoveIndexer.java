@@ -1,13 +1,12 @@
 package frc.robot.Commands;
 
-import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Indexer;
 
-public class StartIntake {
-    //This is just a sample command can change/remove later
-    private Intake s_Intake;
+public class MoveIndexer {
+    private Indexer s_Indexer;
 
     public void initialize() {
-        s_Intake = new Intake();
+        s_Indexer = new Indexer();
     }
 
     public void execute() {

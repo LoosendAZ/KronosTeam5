@@ -1,13 +1,12 @@
 package frc.robot.Commands;
 
-import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Shooter;
 
-public class StartIntake {
-    //This is just a sample command can change/remove later
-    private Intake s_Intake;
+public class ShootBall {
+        private Shooter s_Shooter;
 
     public void initialize() {
-        s_Intake = new Intake();
+        s_Shooter = new Shooter();
     }
 
     public void execute() {
