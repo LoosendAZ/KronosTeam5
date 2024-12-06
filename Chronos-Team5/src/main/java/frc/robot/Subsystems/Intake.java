@@ -49,8 +49,13 @@ public class Intake extends SubsystemBase{
         m_Intake.setVoltage(voltage);
     }
 
+    public double getVoltage() {
+        return m_Intake.getVoltage();
+    }
+
     public void periodic() {
         SmartDashboard.putData("Intake Motor", m_Intake);
+        SmartDashboard.putNumber("Intake voltage", getVoltage());
     }
     
 }

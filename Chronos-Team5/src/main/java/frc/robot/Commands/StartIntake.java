@@ -14,15 +14,16 @@ public class StartIntake extends Command{
     }
 
     public void initialize() {
-        s_Intake.setVoltage(IntakeStates.ON);
+        s_Intake.setSpeed(IntakeStates.ON);
     }
 
     public void execute() {
-        
+        s_Intake.setVoltage(12);
     }
 
     public void end(boolean b) {
-        s_Intake.setVoltage(IntakeStates.OFF);
+        s_Intake.setSpeed(IntakeStates.OFF);
+        s_Intake.setVoltage(0);
     }
 
     public void isFinished() {

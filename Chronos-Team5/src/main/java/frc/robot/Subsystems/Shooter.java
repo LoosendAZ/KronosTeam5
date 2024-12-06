@@ -63,13 +63,15 @@ public class Shooter extends SubsystemBase{
         m_Shooter.setVoltage(0.0);
         m_Shooter.set(0);
         m_Shooter.stopMotor();
+        var c = m_Shooter.getSupplyVoltage();
     }
 
     public double getVoltage() {
-        return 0.0;
+        return m_Shooter.getMotorVoltage();
     }
 
     public void periodic() {
         SmartDashboard.putData("Shooter motor", m_Shooter);
+        SmartDashboard.putNumber("Shooter voltage", getVoltage());
     }
 }

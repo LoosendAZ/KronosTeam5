@@ -13,6 +13,7 @@ import edu.wpi.first.units.*;
 import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 
 import frc.Constants;
+import frc.robot.Subsystems.Indexer.IndexerStates;
 import frc.robot.Subsystems.Intake.IntakeStates;
 
 public class Indexer extends SubsystemBase{
@@ -62,12 +63,13 @@ public class Indexer extends SubsystemBase{
         m_IndexerLeader.setVoltage(voltage);
     }
 
-    public double getMotorVoltage() {
+    public double getVoltage() {
         return m_IndexerLeader.getMotorVoltage().getValueAsDouble();
     }
 
 
     public void periodic() {
         SmartDashboard.putData("Indexer Motor", m_IndexerLeader);
+        SmartDashboard.putNumber("Indexer voltage", getVoltage());
     }
 }
