@@ -3,8 +3,14 @@ package frc.robot.Subsystems;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
+
 import com.ctre.phoenix6.*;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.*;
+import edu.wpi.first.units.*;
+
+import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 
 import frc.Constants;
 import frc.robot.Subsystems.Intake.IntakeStates;
@@ -32,9 +38,9 @@ public class Indexer extends SubsystemBase{
     //All values are arbitrary for now feel free to change
 
     public enum IndexerStates {
-        ON(1.0),
+        ON(0.8),
         OFF(0.0),
-        REVERSE(-1.0);
+        REVERSE(-0.8);
 
         private double speed;
 
@@ -47,14 +53,19 @@ public class Indexer extends SubsystemBase{
         }
     }
 
-    public void setVoltage(IndexerStates state) {
-        //Arbitrary value
-        m_IndexerLeader.setVoltage(state.getSpeed());
+    public void setSpeed(IndexerStates states) {
+        m_IndexerLeader.set(states.getSpeed());
     }
 
-    public double getVoltage() {
-        return -1.0;
+    public void setVoltage(double voltage) {
+        //Arbitrary value
+        m_IndexerLeader.setVoltage(voltage);
     }
+
+    public double getMotorVoltage() {
+        return m_IndexerLeader.getMotorVoltage().getValueAsDouble();
+    }
+
 
     public void periodic() {
         SmartDashboard.putData("Indexer Motor", m_IndexerLeader);

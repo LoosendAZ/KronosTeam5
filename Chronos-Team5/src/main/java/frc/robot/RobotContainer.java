@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.StartIntake;
+import frc.robot.Subsystems.*;
+import frc.robot.Subsystems.Indexer.IndexerStates;
 
 
 public class RobotContainer {
@@ -19,19 +21,36 @@ public class RobotContainer {
   private Trigger xButton = new Trigger(null);
   private Trigger yButton = new Trigger(null);
 
-  private Trigger lefTrigger = new Trigger(null);
+  private Trigger lTrigger = new Trigger(null);
   private Trigger rTrigger = new Trigger(null);
   
   private Joystick lJoystick = new Joystick(00);
   private Joystick rJoystick = new Joystick(000);
 
+
+  private Indexer s_Indexer = new Indexer();
+  private Intake s_Intake = new Intake();
+  private Shooter s_Shooter = new Shooter();
+
   public RobotContainer() {
     configureBindings();
     //Change port number
     controller = new XboxController(0);
+
   }
 
-  private void configureBindings() {}
+  private void configureBindings() {
+      aButton = new Trigger(() -> controller.getAButton());
+      bButton = new Trigger(() -> controller.getBButton());
+      xButton = new Trigger(() -> controller.getXButton());
+      yButton = new Trigger(() -> controller.getYButton());
+
+      lTrigger = new Trigger(() -> controller.getLeftBumper());
+      rTrigger = new Trigger(() -> controller.getRightBumper());
+
+
+      aButton.onTrue(s_Indexer.setSpeed(IndexerStates.ON));
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");

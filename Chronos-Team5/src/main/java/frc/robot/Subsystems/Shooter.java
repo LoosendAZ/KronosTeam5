@@ -25,6 +25,7 @@ public class Shooter extends SubsystemBase{
     public Shooter() {
         m_Shooter = new TalonFX(Constants.HardwarePorts.m_Shooter);
         m_ShooterReverse = new TalonFX(Constants.HardwarePorts.m_ShooterReverse);
+        m_ShooterReverse.setInverted(true);
     }
 
     //All values are arbitrary for now feel free to change
@@ -43,10 +44,25 @@ public class Shooter extends SubsystemBase{
             return this.speed;
         }
     }
-
-    public void setVoltage(ShooterStates state) {
+    
+    public void setSpeed(ShooterStates state) {
         //Arbitrary value
-        m_Shooter.setVoltage(state.getSpeed());
+        m_Shooter.set(state.getSpeed());
+    }
+
+    public void setVoltage(double voltage) {
+        m_Shooter.setVoltage(voltage);
+    }
+
+    public void shoot() {
+        m_Shooter.setVoltage(15);
+        m_Shooter.set(20);
+    }
+
+    public void stop() {
+        m_Shooter.setVoltage(0.0);
+        m_Shooter.set(0);
+        m_Shooter.stopMotor();
     }
 
     public double getVoltage() {

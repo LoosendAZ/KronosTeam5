@@ -11,8 +11,7 @@ import frc.Constants;
 public class Intake extends SubsystemBase{
     private Intake s_Intake;
 
-    private TalonFX m_IntakeLeader;
-    private TalonFX m_IntakeFollower;
+    private TalonFX m_Intake;
 
     public Intake getInstance() {
         if(s_Intake == null) {
@@ -21,8 +20,7 @@ public class Intake extends SubsystemBase{
         return s_Intake;
     }
     public Intake() {
-        m_IntakeLeader = new TalonFX(Constants.HardwarePorts.m_IntakeLeader);
-        m_IntakeFollower = new TalonFX(Constants.HardwarePorts.m_IntakeFollower);
+        m_Intake = new TalonFX(Constants.HardwarePorts.m_IntakeLeader);
     }
 
     //All values are arbitrary for now feel free to change
@@ -43,12 +41,16 @@ public class Intake extends SubsystemBase{
         }
     }
 
-    public void setVoltage(IntakeStates state) {
-        m_IntakeLeader.setVoltage(state.getSpeed());
+    public void setSpeed(IntakeStates states) {
+        m_Intake.set(states.getSpeed());
+    }
+
+    public void setVoltage(double voltage) {
+        m_Intake.setVoltage(voltage);
     }
 
     public void periodic() {
-        SmartDashboard.putData("Intake Motor", m_IntakeLeader);
+        SmartDashboard.putData("Intake Motor", m_Intake);
     }
     
 }
