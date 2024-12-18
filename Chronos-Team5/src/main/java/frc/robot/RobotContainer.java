@@ -35,13 +35,20 @@ public class RobotContainer {
 
 
   public RobotContainer() {
-    configureBindings();
+
+      s_Indexer = Indexer.getInstance();
+      s_Intake = Intake.getInstance();
+      s_Shooter = Shooter.getInstance();
+      // s_Swervedrive = Swervedrive.getInstance();               **Implement swervedrive later**
+
     //Change port number
     controller = new XboxController(0);
 
+    configureBindings();
   }
 
   private void configureBindings() {
+      //xbox bindings
       aButton = new Trigger(() -> controller.getAButton());
       bButton = new Trigger(() -> controller.getBButton());
       xButton = new Trigger(() -> controller.getXButton());
@@ -49,12 +56,6 @@ public class RobotContainer {
 
       lTrigger = new Trigger(() -> controller.getLeftBumper());
       rTrigger = new Trigger(() -> controller.getRightBumper());
-
-      s_Indexer = Indexer.getInstance();
-      s_Intake = new Intake();
-      s_Shooter = new Shooter();
-      s_Swervedrive = new Swervedrive();
-
 
       aButton.onTrue(s_Indexer.setSpeed(IndexerStates.ON));
   }
