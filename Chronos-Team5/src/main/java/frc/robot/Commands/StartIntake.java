@@ -26,8 +26,12 @@ public class StartIntake extends Command{
         s_Intake.setVoltage(0);
     }
 
-    public void isFinished() {
-        
+    public boolean isFinished() {
+        if() {
+            
+        }
+
+        return false;
     }
 
 }
