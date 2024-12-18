@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.Constants;
 
 public class Intake extends SubsystemBase{
-    private Intake s_Intake;
+    private static Intake s_Intake;
 
     private TalonFX m_Intake;
 
-    public Intake getInstance() {
+    public static Intake getInstance() {
         if(s_Intake == null) {
             s_Intake = new Intake();
         }

@@ -10,13 +10,13 @@ import frc.Constants;
 import frc.robot.Subsystems.Indexer.IndexerStates;
 
 public class Shooter extends SubsystemBase{
-    private Shooter s_Shooter;
+    private static Shooter s_Shooter;
 
     private TalonFX m_Shooter;
     private TalonFX m_ShooterReverse;
 
 
-    public Shooter getInstance() {
+    public static Shooter getInstance() {
         if(s_Shooter == null) {
             s_Shooter = new Shooter();
         }

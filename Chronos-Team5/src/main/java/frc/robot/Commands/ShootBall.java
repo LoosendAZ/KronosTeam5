@@ -26,7 +26,10 @@ public class ShootBall extends Command{
     }
 
     public boolean isFinished() {
-        
+        if(true) {
+
+        }
+        return false;
     }
 
 }

@@ -16,21 +16,23 @@ import frc.robot.Subsystems.Indexer.IndexerStates;
 
 public class RobotContainer {
   private XboxController controller;
-  private Trigger aButton = new Trigger(null);
-  private Trigger bButton = new Trigger(null);
-  private Trigger xButton = new Trigger(null);
-  private Trigger yButton = new Trigger(null);
+  private Trigger aButton;
+  private Trigger bButton;
+  private Trigger xButton;
+  private Trigger yButton;
 
-  private Trigger lTrigger = new Trigger(null);
-  private Trigger rTrigger = new Trigger(null);
+  private Trigger lTrigger;
+  private Trigger rTrigger;
   
-  private Joystick lJoystick = new Joystick(00);
-  private Joystick rJoystick = new Joystick(000);
+  private Joystick lJoystick;
+  private Joystick rJoystick;
 
 
-  private Indexer s_Indexer = new Indexer();
-  private Intake s_Intake = new Intake();
-  private Shooter s_Shooter = new Shooter();
+  private Indexer s_Indexer;
+  private Intake s_Intake;
+  private Shooter s_Shooter;
+  private Swervedrive s_Swervedrive;
+
 
   public RobotContainer() {
     configureBindings();
@@ -48,11 +50,19 @@ public class RobotContainer {
       lTrigger = new Trigger(() -> controller.getLeftBumper());
       rTrigger = new Trigger(() -> controller.getRightBumper());
 
+      s_Indexer = Indexer.getInstance();
+      s_Intake = new Intake();
+      s_Shooter = new Shooter();
+      s_Swervedrive = new Swervedrive();
+
 
       aButton.onTrue(s_Indexer.setSpeed(IndexerStates.ON));
   }
 
+  
+
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
+
 }

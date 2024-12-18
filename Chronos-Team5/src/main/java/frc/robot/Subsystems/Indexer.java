@@ -13,17 +13,17 @@ import edu.wpi.first.units.*;
 import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 
 import frc.Constants;
-import frc.robot.Subsystems.Indexer.IndexerStates;
-import frc.robot.Subsystems.Intake.IntakeStates;
+import frc.robot.Subsystems.*;
+
 
 public class Indexer extends SubsystemBase{
-    private Indexer s_Indexer;
+    private static Indexer s_Indexer;
     
     //As far as I remember there were 2 motors I could be wrong
     private TalonFX m_IndexerLeader;
     private TalonFX m_IndexerFollower;
 
-    public Indexer getInstance() {
+    public static Indexer getInstance() {
         if(s_Indexer == null) {
             s_Indexer = new Indexer();
         }

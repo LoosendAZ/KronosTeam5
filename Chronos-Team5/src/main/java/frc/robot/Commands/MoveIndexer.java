@@ -13,12 +13,11 @@ public class MoveIndexer extends Command{
     }
 
     public void initialize() {
-    
+        s_Indexer.setSpeed(IndexerStates.ON);
     }
 
     public void execute() {
         s_Indexer.setVoltage(12);
-        s_Indexer.setSpeed(IndexerStates.ON);
     }
 
     public void end(boolean b) {
@@ -27,7 +26,11 @@ public class MoveIndexer extends Command{
     }
 
     public boolean isFinished() {
-        
+        if(true) {
+
+        }
+
+        return false;
     }
 
 }
