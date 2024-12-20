@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 
 import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.*;
 import edu.wpi.first.units.*;
@@ -23,6 +24,8 @@ public class Indexer extends SubsystemBase{
     private TalonFX m_IndexerLeader;
     private TalonFX m_IndexerFollower;
 
+    private Follower f = new Follower(Constants.HardwarePorts.m_IndexerLeader, false);
+
     public static Indexer getInstance() {
         if(s_Indexer == null) {
             s_Indexer = new Indexer();
@@ -33,15 +36,16 @@ public class Indexer extends SubsystemBase{
     public Indexer() {
         m_IndexerLeader = new TalonFX(Constants.HardwarePorts.m_IndexerLeader);
         m_IndexerFollower = new TalonFX(Constants.HardwarePorts.m_IndexerFollower);
-        
+
+        m_IndexerFollower.setControl(f);
     }
 
     //All values are arbitrary for now feel free to change
 
     public enum IndexerStates {
-        ON(0.8),
+        ON(0.5),
         OFF(0.0),
-        REVERSE(-0.8);
+        REVERSE(-0.5);
 
         private double speed;
 

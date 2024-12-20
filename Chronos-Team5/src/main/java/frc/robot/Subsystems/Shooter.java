@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.*;
 
 import frc.Constants;
@@ -15,6 +16,7 @@ public class Shooter extends SubsystemBase{
     private TalonFX m_Shooter;
     private TalonFX m_ShooterReverse;
 
+p   private Follower f = new Follower(Constants.HardwarePorts.m_IndexerLeader, true);
 
     public static Shooter getInstance() {
         if(s_Shooter == null) {
@@ -25,7 +27,8 @@ public class Shooter extends SubsystemBase{
     public Shooter() {
         m_Shooter = new TalonFX(Constants.HardwarePorts.m_Shooter);
         m_ShooterReverse = new TalonFX(Constants.HardwarePorts.m_ShooterReverse);
-        m_ShooterReverse.setInverted(true);
+
+        m_ShooterReverse.setControl(f);
     }
 
     //All values are arbitrary for now feel free to change
@@ -43,6 +46,10 @@ public class Shooter extends SubsystemBase{
         public double getSpeed() {
             return this.speed;
         }
+    }
+
+    private void configMotor() {
+        m_ShooterReverse.setInverted(true);
     }
     
     public void setSpeed(ShooterStates state) {
