@@ -8,8 +8,8 @@ public class StartIntake extends Command{
     //This is just a sample command can change/remove later
     private Intake s_Intake;
 
-    public StartIntake(Intake intake) {
-        s_Intake = intake;
+    public StartIntake(Intake.IntakeStates iStates) {
+        s_Intake = Intake.getInstance();
         addRequirements(s_Intake);
     }
 
@@ -18,7 +18,7 @@ public class StartIntake extends Command{
     }
 
     public void execute() {
-        s_Intake.setVoltage(12);
+
     }
 
     public void end(boolean b) {
@@ -27,8 +27,8 @@ public class StartIntake extends Command{
     }
 
     public boolean isFinished() {
-        if() {
-            
+        if(true) {
+            return true;
         }
 
         return false;

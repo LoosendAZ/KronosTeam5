@@ -6,9 +6,10 @@ import frc.robot.Subsystems.Shooter.ShooterStates;
 
 public class ShootBall extends Command{
     private Shooter s_Shooter;
+    private Shooter.ShooterStates sState;
 
-    public ShootBall(Shooter shooter) {
-        s_Shooter = shooter;
+    public ShootBall(Shooter.ShooterStates sState) {
+        s_Shooter = Shooter.getInstance();
         addRequirements(s_Shooter);
     }
 
@@ -17,17 +18,17 @@ public class ShootBall extends Command{
     }
 
     public void execute() {
-        s_Shooter.shoot();
+
     }
 
     public void end(boolean b) {
-        s_Shooter.stop();
+        // s_Shooter.stop();
         s_Shooter.setSpeed(ShooterStates.OFF);
     }
 
     public boolean isFinished() {
         if(true) {
-
+            return true;
         }
         return false;
     }

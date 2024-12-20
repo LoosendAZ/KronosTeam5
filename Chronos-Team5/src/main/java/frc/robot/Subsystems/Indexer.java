@@ -65,6 +65,5 @@ public class Indexer extends SubsystemBase{
 
     public void periodic() {
         SmartDashboard.putData("Indexer Motor", m_IndexerLeader);
-        SmartDashboard.putNumber("Indexer voltage", getVoltage());
     }
 }

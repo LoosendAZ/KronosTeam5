@@ -6,18 +6,19 @@ import frc.robot.Subsystems.Indexer.IndexerStates;
 
 public class MoveIndexer extends Command{
     private Indexer s_Indexer;
+    private Indexer.IndexerStates iState;
 
-    public MoveIndexer(Indexer indexer) {
-        this.s_Indexer = indexer;
+    public MoveIndexer(Indexer.IndexerStates iState) {
+        this.s_Indexer = Indexer.getInstance();
         addRequirements(s_Indexer);
     }
 
     public void initialize() {
-        s_Indexer.setSpeed(IndexerStates.ON);
+        s_Indexer.setSpeed(iState);
     }
 
     public void execute() {
-        s_Indexer.setVoltage(12);
+
     }
 
     public void end(boolean b) {
@@ -27,7 +28,7 @@ public class MoveIndexer extends Command{
 
     public boolean isFinished() {
         if(true) {
-
+            return true;
         }
 
         return false;

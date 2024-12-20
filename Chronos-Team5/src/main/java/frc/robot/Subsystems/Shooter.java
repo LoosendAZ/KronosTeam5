@@ -54,16 +54,16 @@ public class Shooter extends SubsystemBase{
         m_Shooter.setVoltage(voltage);
     }
 
-    public void shoot() {
-        m_Shooter.setVoltage(15);
-        m_Shooter.set(20);
-    }
+    // public void shoot() {
+    //     m_Shooter.setVoltage(15);
+    //     m_Shooter.set(20);
+    // }
 
-    public void stop() {
-        m_Shooter.setVoltage(0.0);
-        m_Shooter.set(0);
-        m_Shooter.stopMotor();
-    }
+    // public void stop() {
+    //     m_Shooter.setVoltage(0.0);
+    //     m_Shooter.set(0);
+    //     m_Shooter.stopMotor();
+    // }
 
     public void periodic() {
         SmartDashboard.putData("Shooter motor", m_Shooter);
