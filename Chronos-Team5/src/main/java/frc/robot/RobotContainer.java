@@ -66,7 +66,7 @@ public class RobotContainer {
       lTrigger.whileTrue(new MoveIndexer(IndexerStates.ON));
       yButton.whileTrue(new ShootBall(ShooterStates.ON));
 
-
+      
   }
 
   public Command getAutonomousCommand() {
