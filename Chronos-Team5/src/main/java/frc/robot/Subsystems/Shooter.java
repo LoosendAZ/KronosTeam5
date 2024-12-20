@@ -24,6 +24,7 @@ public class Shooter extends SubsystemBase{
         }
         return s_Shooter;
     }
+    
     public Shooter() {
         m_Shooter = new TalonFX(Constants.HardwarePorts.m_Shooter);
         m_ShooterReverse = new TalonFX(Constants.HardwarePorts.m_ShooterReverse);

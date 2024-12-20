@@ -27,6 +27,7 @@ public class MoveIndexer extends Command{
     }
 
     public boolean isFinished() {
+        //placeholder
         if(true) {
             return true;
         }

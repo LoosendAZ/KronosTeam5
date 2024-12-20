@@ -27,6 +27,7 @@ public class ShootBall extends Command{
     }
 
     public boolean isFinished() {
+        //idk what to put here
         if(true) {
             return true;
         }
