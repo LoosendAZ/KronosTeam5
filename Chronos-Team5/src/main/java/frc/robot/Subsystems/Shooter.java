@@ -12,11 +12,11 @@ import frc.robot.Subsystems.Indexer.IndexerStates;
 
 public class Shooter extends SubsystemBase{
     private static Shooter s_Shooter;
-
+ 
     private TalonFX m_Shooter;
     private TalonFX m_ShooterReverse;
 
-p   private Follower f = new Follower(Constants.HardwarePorts.m_IndexerLeader, true);
+    private Follower f = new Follower(Constants.HardwarePorts.m_IndexerLeader, true);
 
     public static Shooter getInstance() {
         if(s_Shooter == null) {
@@ -33,9 +33,9 @@ p   private Follower f = new Follower(Constants.HardwarePorts.m_IndexerLeader, t
 
     //All values are arbitrary for now feel free to change
     public enum ShooterStates {
-        ON(1.0),
+        ON(0.5),
         OFF(0.0),
-        REVERSE(-1.0);
+        REVERSE(-0.5);
 
         private double speed;
 
@@ -49,7 +49,7 @@ p   private Follower f = new Follower(Constants.HardwarePorts.m_IndexerLeader, t
     }
 
     private void configMotor() {
-        m_ShooterReverse.setInverted(true);
+        
     }
     
     public void setSpeed(ShooterStates state) {

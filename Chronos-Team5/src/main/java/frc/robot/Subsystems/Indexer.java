@@ -16,7 +16,6 @@ import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 import frc.Constants;
 import frc.robot.Subsystems.*;
 
-
 public class Indexer extends SubsystemBase{
     private static Indexer s_Indexer;
     
@@ -39,8 +38,6 @@ public class Indexer extends SubsystemBase{
 
         m_IndexerFollower.setControl(f);
     }
-
-    //All values are arbitrary for now feel free to change
 
     public enum IndexerStates {
         ON(0.5),

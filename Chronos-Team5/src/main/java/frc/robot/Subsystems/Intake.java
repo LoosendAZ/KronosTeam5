@@ -26,9 +26,9 @@ public class Intake extends SubsystemBase{
     //All values are arbitrary for now feel free to change
 
     public enum IntakeStates {
-        ON(1.0),
+        ON(0.5),
         OFF(0.0),
-        REVERSE(-1.0);
+        REVERSE(-0.5);
 
         private double speed;
 

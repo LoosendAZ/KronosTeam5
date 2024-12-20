@@ -10,9 +10,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Commands.MoveIndexer;
+import frc.robot.Commands.ShootBall;
 import frc.robot.Commands.StartIntake;
 import frc.robot.Subsystems.*;
 import frc.robot.Subsystems.Indexer.IndexerStates;
+import frc.robot.Subsystems.Intake.IntakeStates;
+import frc.robot.Subsystems.Shooter.ShooterStates;
 
 
 public class RobotContainer {
@@ -27,9 +31,6 @@ public class RobotContainer {
   
   private Joystick lJoystick;
   private Joystick rJoystick;
-
-  //DPADSS??
-
 
   private Indexer s_Indexer;
   private Intake s_Intake;
@@ -60,12 +61,12 @@ public class RobotContainer {
       lTrigger = new Trigger(() -> controller.getLeftBumper());
       rTrigger = new Trigger(() -> controller.getRightBumper());
 
+      aButton.whileTrue(new StartIntake(IntakeStates.ON));
+      bButton.whileTrue(new StartIntake(IntakeStates.REVERSE));
+      lTrigger.whileTrue(new MoveIndexer(IndexerStates.ON));
+      yButton.whileTrue(new ShootBall(ShooterStates.ON));
 
-      //placeholders; research actual command configuration
-      aButton.onTrue(getAutonomousCommand());
-      bButton.whileTrue(getAutonomousCommand());
-      xButton.whileTrue(getAutonomousCommand());
-      yButton.onTrue(getAutonomousCommand());
+
   }
 
   
