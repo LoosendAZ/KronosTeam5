@@ -28,6 +28,8 @@ public class RobotContainer {
   private Joystick lJoystick;
   private Joystick rJoystick;
 
+  //DPADSS??
+
 
   private Indexer s_Indexer;
   private Intake s_Intake;
@@ -64,8 +66,6 @@ public class RobotContainer {
       bButton.whileTrue(getAutonomousCommand());
       xButton.whileTrue(getAutonomousCommand());
       yButton.onTrue(getAutonomousCommand());
-      
-
   }
 
   

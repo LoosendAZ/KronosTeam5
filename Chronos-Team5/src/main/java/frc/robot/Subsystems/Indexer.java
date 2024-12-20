@@ -63,11 +63,6 @@ public class Indexer extends SubsystemBase{
         m_IndexerLeader.setVoltage(voltage);
     }
 
-    public double getVoltage() {
-        return m_IndexerLeader.getMotorVoltage().getValueAsDouble();
-    }
-
-
     public void periodic() {
         SmartDashboard.putData("Indexer Motor", m_IndexerLeader);
         SmartDashboard.putNumber("Indexer voltage", getVoltage());
