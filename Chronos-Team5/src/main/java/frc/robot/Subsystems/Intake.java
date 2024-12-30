@@ -2,7 +2,10 @@ package frc.robot.Subsystems;
 
 
 import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.*;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -21,6 +24,8 @@ public class Intake extends SubsystemBase{
     }
     public Intake() {
         m_Intake = new TalonFX(Constants.HardwarePorts.m_IntakeLeader);
+
+        configMotor(m_Intake);
     }
 
     //All values are arbitrary for now feel free to change
@@ -39,6 +44,15 @@ public class Intake extends SubsystemBase{
         public double getSpeed() {
             return this.speed;
         }
+    }
+
+    private void configMotor(TalonFX fx) {
+        TalonFXConfiguration configs = new TalonFXConfiguration();
+        CurrentLimitsConfigs currentConfigs = new CurrentLimitsConfigs();    
+        configs.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+        currentConfigs.SupplyCurrentLimit = 8.0; //PLACEHOLDER
+        fx.getConfigurator().apply(configs);
+        fx.getConfigurator().apply(currentConfigs);
     }
 
     public void setSpeed(IntakeStates states) {

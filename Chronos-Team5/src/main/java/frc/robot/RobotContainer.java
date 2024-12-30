@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Commands.MoveIndexer;
-import frc.robot.Commands.ShootBall;
-import frc.robot.Commands.StartIntake;
+import frc.robot.Commands.*;
+
+
 import frc.robot.Subsystems.*;
 import frc.robot.Subsystems.Indexer.IndexerStates;
 import frc.robot.Subsystems.Intake.IntakeStates;
@@ -66,7 +66,8 @@ public class RobotContainer {
       lTrigger.whileTrue(new MoveIndexer(IndexerStates.ON));
       yButton.whileTrue(new ShootBall(ShooterStates.ON));
 
-      
+      lTrigger.whileTrue(new Drive());
+      rTrigger.whileTrue(new Drive());
   }
 
   public Command getAutonomousCommand() {

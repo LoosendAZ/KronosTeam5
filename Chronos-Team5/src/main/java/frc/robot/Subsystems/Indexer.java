@@ -6,12 +6,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 
 import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.*;
 import edu.wpi.first.units.*;
 
 import com.ctre.phoenix6.hardware.core.CoreTalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import frc.Constants;
 import frc.robot.Subsystems.*;
@@ -37,6 +40,8 @@ public class Indexer extends SubsystemBase{
         m_IndexerFollower = new TalonFX(Constants.HardwarePorts.m_IndexerFollower);
 
         m_IndexerFollower.setControl(f);
+        configMotor(m_IndexerLeader);
+        configMotor(m_IndexerFollower);
     }
 
     public enum IndexerStates {
@@ -53,6 +58,15 @@ public class Indexer extends SubsystemBase{
         public double getSpeed() {
             return this.speed;
         }
+    }
+
+    private void configMotor(TalonFX fx) {
+        TalonFXConfiguration configs = new TalonFXConfiguration();
+        CurrentLimitsConfigs currentConfigs = new CurrentLimitsConfigs();    
+        configs.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+        currentConfigs.SupplyCurrentLimit = 8.0; //PLACEHOLDER
+        fx.getConfigurator().apply(configs);
+        fx.getConfigurator().apply(currentConfigs);
     }
 
     public void setSpeed(IndexerStates states) {

@@ -7,6 +7,7 @@ import frc.robot.Subsystems.Intake.IntakeStates;
 public class StartIntake extends Command{
     //This is just a sample command can change/remove later
     private Intake s_Intake;
+    private IntakeStates iStates;
 
     public StartIntake(Intake.IntakeStates iStates) {
         s_Intake = Intake.getInstance();
@@ -14,7 +15,7 @@ public class StartIntake extends Command{
     }
 
     public void initialize() {
-        s_Intake.setSpeed(IntakeStates.ON);
+        s_Intake.setSpeed(iStates);
     }
 
     public void execute() {
@@ -23,12 +24,11 @@ public class StartIntake extends Command{
 
     public void end(boolean b) {
         s_Intake.setSpeed(IntakeStates.OFF);
-        s_Intake.setVoltage(0);
     }
 
     public boolean isFinished() {
         if(true) {
-            return true;
+            
         }
 
         return false;

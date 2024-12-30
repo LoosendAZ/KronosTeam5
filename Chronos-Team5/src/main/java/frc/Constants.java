@@ -11,4 +11,10 @@ public class Constants {
         public static final int m_Shooter = 5;
         public static final int m_ShooterReverse = 6;
     }
+
+    //placeholder nums
+    public static class Drive {
+        public static double driveAngle = 3 * Math.PI;
+        public static double driveSpeed = Math.PI;
+    }
 }

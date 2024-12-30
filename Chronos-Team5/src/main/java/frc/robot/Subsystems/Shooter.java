@@ -4,8 +4,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.*;
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.*;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import frc.Constants;
 import frc.robot.Subsystems.Indexer.IndexerStates;
@@ -24,7 +27,7 @@ public class Shooter extends SubsystemBase{
         }
         return s_Shooter;
     }
-    
+
     public Shooter() {
         m_Shooter = new TalonFX(Constants.HardwarePorts.m_Shooter);
         m_ShooterReverse = new TalonFX(Constants.HardwarePorts.m_ShooterReverse);
@@ -35,8 +38,7 @@ public class Shooter extends SubsystemBase{
     //All values are arbitrary for now feel free to change
     public enum ShooterStates {
         ON(0.5),
-        OFF(0.0),
-        REVERSE(-0.5);
+        OFF(0.0);
 
         private double speed;
 
@@ -49,8 +51,13 @@ public class Shooter extends SubsystemBase{
         }
     }
 
-    private void configMotor() {
-        
+    private void configMotor(TalonFX fx) {
+        TalonFXConfiguration configs = new TalonFXConfiguration();
+        CurrentLimitsConfigs currentConfigs = new CurrentLimitsConfigs();    
+        configs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        currentConfigs.SupplyCurrentLimit = 8.0; //PLACEHOLDER
+        fx.getConfigurator().apply(configs);
+        fx.getConfigurator().apply(currentConfigs);
     }
     
     public void setSpeed(ShooterStates state) {
@@ -62,16 +69,6 @@ public class Shooter extends SubsystemBase{
         m_Shooter.setVoltage(voltage);
     }
 
-    // public void shoot() {
-    //     m_Shooter.setVoltage(15);
-    //     m_Shooter.set(20);
-    // }
-
-    // public void stop() {
-    //     m_Shooter.setVoltage(0.0);
-    //     m_Shooter.set(0);
-    //     m_Shooter.stopMotor();
-    // }
 
     public void periodic() {
         SmartDashboard.putData("Shooter motor", m_Shooter);
